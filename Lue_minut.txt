@@ -1,0 +1,2 @@
+Tämä ohjelma hakee Ylen pääutisten otsikot, linkit ja julkaisuajat RSS-syötteestä ja tallentaa ne txt-tiedostoon.
+Tarvittavat kirjastot: feedparser.
