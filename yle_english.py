@@ -1,11 +1,11 @@
 import feedparser
 import time
-#RSS-syöte
-feed = feedparser.parse("https://feeds.yle.fi/uutiset/v1/majorHeadlines/YLE_UUTISET.rss")
+#RSS feed url
+feed = feedparser.parse("https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_NEWS")
 
-#tiedoston nimi ajalla
+#create file name with the currrent day and time
 timestr = time.strftime("%Y%m%d-%H%M%S")
-#kirjoitetaan txt tiedostoon rss-syötteen vastaukset
+#write rss responses to txt file
 with open(timestr+".txt", "w") as file:
     for entry in feed.entries:
 
@@ -15,11 +15,11 @@ with open(timestr+".txt", "w") as file:
 
         print ("{}".format(article_title))
         print ("[{}]".format(article_link))
-        print ("Aika {}".format(article_published_at))
+        print ("Published at {}".format(article_published_at))
         file.write("{}\n".format(article_title))
         file.write("{}\n".format(article_link))
-        file.write("Aika: {}\n".format(article_published_at))
+        file.write("Published at: {}\n".format(article_published_at))
         file.write("\n")
 
 file.close()
-print("Syötteet tallennettu tiedostoon.")
+print("RSS feed saved to txt file.")
